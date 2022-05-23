@@ -1,0 +1,3 @@
+Advanced instruction guide:
+[init] # instructions below this tag are presented just one time
+[repeat] # instructions below this tag are repeated value times (where value is the last parameter of instruction)

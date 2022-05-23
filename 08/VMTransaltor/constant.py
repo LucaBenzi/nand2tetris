@@ -1,0 +1,6 @@
+STACK_OPERATIONS = ["pop", "push"]
+STACK_ARGUMENTS = ["constant", "local", "argument", "this", "that", "temp", "static", "pointer"]
+MATH_OPERATIONS = ["add", "sub", "and", "or", "not", "neg", "eq", "lt", "gt"]
+ADVANCED_OPERATIONS = ["function"]
+FLOW_CONTROL_OPERATIONS = ["label", "if-goto", "goto", "function", "return", "call"]
+INSTRUCTION_FIELDS = ["instruction", "argument", "value"]

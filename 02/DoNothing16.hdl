@@ -1,0 +1,7 @@
+CHIP DoNothing16 {
+    IN a[16];
+    OUT out[16];
+
+    PARTS:
+    Or16(a = a , b = a , out = out);
+}

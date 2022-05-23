@@ -1,0 +1,85 @@
+class Wall {
+
+	field int x, y;	// wall position
+	field int width, height;
+	field int speed;
+	
+	constructor Wall new( int Ax, int Ay){
+		let x = Ax;
+        let y = Ay;
+        let width = 15;
+        let height = 100;
+		let speed = 50;
+        do show();
+        return this;
+	}
+	
+	/** Deallocates the object's memory. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+	
+	method int getSpeed(){
+		return speed;
+	}
+
+    /** Shows the wall. */
+    method void show() {
+        do Screen.setColor(true);
+        do draw();
+        return;
+    }
+
+    /** Hides the wall. */
+    method void hide() {
+        do Screen.setColor(false);
+        do draw();
+        return;
+    }
+
+    /** Draws the wall. */
+    method void draw() {
+        do Screen.drawRectangle(x, y, x + width, y + height);
+        return;
+    }
+
+   
+    /** Sets the wall's width. */
+    method void setWidth(int Awidth) {
+        do hide();
+        let width = Awidth;
+        do show();
+        return;
+    }
+	
+	method void increaseSpeed(int s){
+		let speed = speed + s;
+		return;
+	}
+	
+	method int getPosition(){
+		return x;
+	}
+	
+	method int getY(){
+		return y;
+	}
+
+    /** Moves the wall one step in the bat's direction. */
+    method int move() {
+		var int score; 
+	    do hide();
+		let score = 0;
+		let x = x - 5;
+		if(x<0){
+			let x = 495;
+			let score = 1;
+			if(speed > 10){
+				let speed = speed - 10;
+			}
+		}
+		do show();
+        return score;
+    }
+}

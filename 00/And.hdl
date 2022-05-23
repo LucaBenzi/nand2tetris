@@ -1,0 +1,10 @@
+/** PORTA AND */
+CHIP And{
+	IN a, b;
+	OUT out;
+	
+	PARTS:
+	Nand(a=a, b=b, out=nandRes);
+	Not(in=nandRes, out=out);
+
+}

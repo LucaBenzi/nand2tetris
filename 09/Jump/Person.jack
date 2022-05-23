@@ -1,0 +1,93 @@
+class Person {
+
+	field int x, y;	// person position
+	field int width, height;
+	field boolean jumpingState;
+	field boolean direction;
+	
+	constructor Person new( int Ax, int Ay, int Awidth, int Aheight){
+		let x = Ax;
+        let y = Ay;
+        let width = Awidth;
+        let height = Aheight;
+		let jumpingState = false;
+		let direction = 1;
+        do show();
+        return this;
+	}
+	
+	method int getPosition(){
+		return x;
+	}
+	
+	/** Deallocates the object's memory. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Shows the person. */
+    method void show() {
+        do Screen.setColor(true);
+        do draw();
+        return;
+    }
+
+    /** Hides the person. */
+    method void hide() {
+        do Screen.setColor(false);
+        do draw();
+        return;
+    }
+	
+	/** Draws the person. */
+    method int getWidth() {
+        return width;
+    }
+	
+	method int getY(){
+		return y;
+	}
+	
+    /** Draws the person. */
+    method void draw() {
+        do Screen.drawRectangle(x, y, x + width, y + height);
+        return;
+    }
+
+   
+    /** Sets the person's width. */
+    method void setWidth(int Awidth) {
+        do hide();
+        let width = Awidth;
+        do show();
+        return;
+    }
+
+    /** Moves the person*/
+    method void move() {
+	    if ( jumpingState ){
+			if (y<50) {
+				let direction = -1;
+			}
+			do hide();
+			let y = y - (10 * direction);
+			if ( y = 220 ){
+				let jumpingState = false;
+			}
+		}
+		do show();
+        return;
+    }
+	
+	method void jump(){
+		if (jumpingState){
+			return;
+		}
+		if (~jumpingState) {
+			let jumpingState = true;
+			let direction = 1;
+		}
+		return;
+	}
+}

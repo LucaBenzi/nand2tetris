@@ -1,0 +1,3 @@
+push constant 2000
+pop pointer 0
+push pointer 0

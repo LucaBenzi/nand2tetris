@@ -1,0 +1,29 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/Average/Main.jack
+
+// Inputs some numbers and computes their average
+class Main {
+	function void main() {
+		var Array a;
+		var int lenght;
+		var int i, sum;
+
+		let i = 0;
+		let sum = 0;
+		let lenght = Keyboard.readInt("How many numbers? ");
+		let a = Array.new(lenght);	// creates a new empty array
+
+		while(i<lenght){
+			let a[i] = Keyboard.readInt("Insert number: ");
+			let sum = sum + a[i];
+			let i = i+1;			
+		}
+		
+		do Output.printString("The average is: ");
+		do Output.printInt(sum/lenght);
+		do Output.println();
+		return;
+	}
+}

@@ -1,0 +1,10 @@
+@ARG
+D=M
+@[value]
+A=D+A
+D=M
+@SP
+A=M
+M=D
+@SP
+M=M+1

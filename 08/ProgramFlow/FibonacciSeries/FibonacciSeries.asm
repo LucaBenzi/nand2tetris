@@ -1,0 +1,300 @@
+// {'instruction': 'push', 'argument': 'argument', 'value': '1'}--> 10 lines
+@ARG
+D=M
+@1
+A=D+A
+D=M
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'pointer', 'value': '1'}--> 15 lines
+@3
+D=A
+@1
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'push', 'argument': 'constant', 'value': '0'}--> 7 lines
+@0
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'that', 'value': '0'}--> 15 lines
+@THAT
+D=M
+@0
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'push', 'argument': 'constant', 'value': '1'}--> 7 lines
+@1
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'that', 'value': '1'}--> 15 lines
+@THAT
+D=M
+@1
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'push', 'argument': 'argument', 'value': '0'}--> 10 lines
+@ARG
+D=M
+@0
+A=D+A
+D=M
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'push', 'argument': 'constant', 'value': '2'}--> 7 lines
+@2
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'sub'}--> 12 lines
+@SP
+M=M-1
+@SP
+A=M
+D=M
+@SP
+M=M-1
+@SP
+A=M
+M=M-D
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'argument', 'value': '0'}--> 15 lines
+@ARG
+D=M
+@0
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'label', 'argument': 'MAIN_LOOP_START'}--> 1 lines
+($MAIN_LOOP_START)
+// {'instruction': 'push', 'argument': 'argument', 'value': '0'}--> 10 lines
+@ARG
+D=M
+@0
+A=D+A
+D=M
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'if-goto', 'argument': 'COMPUTE_ELEMENT'}--> 6 lines
+@SP
+M=M-1
+A=M
+D=M
+@$COMPUTE_ELEMENT
+D;JNE
+// {'instruction': 'goto', 'argument': 'END_PROGRAM'}--> 2 lines
+@$END_PROGRAM
+0;JEQ
+// {'instruction': 'label', 'argument': 'COMPUTE_ELEMENT'}--> 1 lines
+($COMPUTE_ELEMENT)
+// {'instruction': 'push', 'argument': 'that', 'value': '0'}--> 10 lines
+@0
+D=A
+@THAT
+A=D+M
+D=M
+@R0
+A=M
+M=D
+@R0
+M=M+1
+// {'instruction': 'push', 'argument': 'that', 'value': '1'}--> 10 lines
+@1
+D=A
+@THAT
+A=D+M
+D=M
+@R0
+A=M
+M=D
+@R0
+M=M+1
+// {'instruction': 'add'}--> 12 lines
+@SP
+M=M-1
+@SP
+A=M
+D=M
+@SP
+M=M-1
+@SP
+A=M
+M=D+M
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'that', 'value': '2'}--> 15 lines
+@THAT
+D=M
+@2
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'push', 'argument': 'pointer', 'value': '1'}--> 10 lines
+@3
+D=A
+@1
+A=D+A
+D=M
+@R0
+A=M
+M=D
+@R0
+M=M+1
+// {'instruction': 'push', 'argument': 'constant', 'value': '1'}--> 7 lines
+@1
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'add'}--> 12 lines
+@SP
+M=M-1
+@SP
+A=M
+D=M
+@SP
+M=M-1
+@SP
+A=M
+M=D+M
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'pointer', 'value': '1'}--> 15 lines
+@3
+D=A
+@1
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'push', 'argument': 'argument', 'value': '0'}--> 10 lines
+@ARG
+D=M
+@0
+A=D+A
+D=M
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'push', 'argument': 'constant', 'value': '1'}--> 7 lines
+@1
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// {'instruction': 'sub'}--> 12 lines
+@SP
+M=M-1
+@SP
+A=M
+D=M
+@SP
+M=M-1
+@SP
+A=M
+M=M-D
+@SP
+M=M+1
+// {'instruction': 'pop', 'argument': 'argument', 'value': '0'}--> 15 lines
+@ARG
+D=M
+@0
+A=D+A
+D=A
+@R13
+M=D
+@R0
+M=M-1
+@R0
+A=M
+D=M
+@R13
+A=M
+M=D
+// {'instruction': 'goto', 'argument': 'MAIN_LOOP_START'}--> 2 lines
+@$MAIN_LOOP_START
+0;JEQ
+// {'instruction': 'label', 'argument': 'END_PROGRAM'}--> 1 lines
+($END_PROGRAM)

@@ -1,0 +1,10 @@
+@[value]
+D=A
+@THAT
+A=D+M
+D=M
+@R0
+A=M
+M=D
+@R0
+M=M+1

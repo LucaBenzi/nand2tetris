@@ -1,0 +1,19 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/HelloWorld/Main.jack
+
+/** Hello World program. */
+class Main {
+	
+	
+	
+	
+	function void main() {
+		var JumpGame game;
+		do JumpGame.newInstance();
+		let game = JumpGame.getInstance();
+		do game.run();
+	return;
+	}
+}

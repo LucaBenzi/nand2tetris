@@ -1,0 +1,7 @@
+CHIP IfZero {
+    IN a[16];
+    OUT out;
+
+    PARTS:
+    Or(a = a[15] , b = a[15] , out = out);
+}

@@ -1,0 +1,159 @@
+function Person.new 0
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push constant 0
+pop this 4
+push constant 1
+pop this 5
+push pointer 0
+call Person.show 1
+pop temp 0
+push pointer 0
+return
+function Person.getPosition 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Person.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Person.show 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Person.draw 1
+pop temp 0
+push constant 0
+return
+function Person.hide 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+call Person.draw 1
+pop temp 0
+push constant 0
+return
+function Person.getWidth 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Person.getY 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Person.draw 0
+push argument 0
+pop pointer 0
+push this 0
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push this 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Person.setWidth 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Person.hide 1
+pop temp 0
+push argument 1
+pop this 2
+push pointer 0
+call Person.show 1
+pop temp 0
+push constant 0
+return
+function Person.move 0
+push argument 0
+pop pointer 0
+push this 4
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+push constant 50
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+neg
+pop this 5
+label IF_FALSE1
+push pointer 0
+call Person.hide 1
+pop temp 0
+push this 1
+push constant 10
+push this 5
+call Math.multiply 2
+sub
+pop this 1
+push this 1
+push constant 220
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+pop this 4
+label IF_FALSE2
+label IF_FALSE0
+push pointer 0
+call Person.show 1
+pop temp 0
+push constant 0
+return
+function Person.jump 0
+push argument 0
+pop pointer 0
+push this 4
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push this 4
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+pop this 4
+push constant 1
+pop this 5
+label IF_FALSE1
+push constant 0
+return

@@ -1,0 +1,28 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/DMux4Way.hdl
+
+/**
+ * 4-way demultiplexor.
+ * {a,b,c,d} = {in,0,0,0} if sel==00
+ *             {0,in,0,0} if sel==01
+ *             {0,0,in,0} if sel==10
+ *             {0,0,0,in} if sel==11
+ */
+
+CHIP DMux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    // Put your code here:
+	Not(a = sel[0], out = out0);
+	Not(a = sel[1], out = out1);
+
+	And3Way(a = in, b = out1, c = out0, out = a);
+	And3Way(a = in, b = out1, c = sel[0], out = b);
+	And3Way(a = in, b = sel[1], c = out0, out = c);
+	And3Way(a = in, b = sel[1], c = sel[0], out = d);
+		
+}

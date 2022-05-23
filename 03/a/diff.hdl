@@ -1,0 +1,8 @@
+
+CHIP diff {
+    IN in;
+    OUT out;
+
+    PARTS:
+	DFF(in = in , out = out);
+}

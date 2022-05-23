@@ -1,0 +1,10 @@
+@3
+D=A
+@[value]
+A=D+A
+D=M
+@R0
+A=M
+M=D
+@R0
+M=M+1

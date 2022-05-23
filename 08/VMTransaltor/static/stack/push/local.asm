@@ -1,0 +1,10 @@
+@LCL
+D=M
+@[value]
+A=D+A
+D=M
+@R0
+A=M
+M=D
+@R0
+M=M+1

@@ -1,0 +1,75 @@
+class JumpGame {
+
+    static JumpGame instance; 
+    field Person person;       
+    field Wall wall;      
+	field int score;
+	/** Constructs a new Pong game. */
+    constructor JumpGame new() {
+	    do Screen.clearScreen();
+        let person = Person.new(100, 220, 15, 35);
+        let wall = Wall.new(495, 155);
+	    do Output.moveCursor(0,0);
+	    do Output.printString("Score: 0");
+	    let score = 0;
+
+        return this;
+    }
+	
+	function void newInstance() {
+        let instance = JumpGame.new();
+        return;
+    }
+	
+	function JumpGame getInstance() {
+        return instance;
+    }
+	
+	method boolean collision() {
+		var int p,w, width, pmin, pmax, py, wy;
+		let p = person.getPosition();
+		let width = person.getWidth();
+		let w = wall.getPosition();
+		let pmin = p;
+		let pmax = p + width;
+		let py = person.getY();
+		let wy = wall.getY();
+		
+		if (py>wy){
+			if (w < pmax){
+				if (w > pmin ){
+					return true;
+				}
+			}
+		}		
+		return false;
+	}
+	
+	
+	method void run(){
+		var char key;
+		var boolean c;
+		let c = false;
+		while ( ~collision() ){
+			let score = score + wall.move();
+			do person.move();
+			let key = Keyboard.keyPressed();
+			if ( key = 131){	// up arrow
+				do person.jump();
+			}
+
+			
+			do Output.moveCursor(0,7);
+			do Output.printInt(score);
+			do Sys.wait(wall.getSpeed());
+			
+		}
+		do person.hide();
+		do wall.hide();
+		do Screen.clearScreen();
+		do Output.moveCursor(10,25);
+		do Output.printString("Score: ");
+		do Output.printInt(score);
+		return;
+	}
+}

@@ -1,0 +1,9 @@
+CHIP AlwaysZero16 {
+    IN a[16];
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+	Not16(in[0..15] = true, out = out);
+	
+}
