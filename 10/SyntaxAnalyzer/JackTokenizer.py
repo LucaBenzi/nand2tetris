@@ -1,12 +1,16 @@
 import re
 from Jack import *
 
+
 class JackTokenizer:
-    tokens = []
-    content = ""
-    filename = ""
+
 
     def __init__(self, filename):
+        self.tokens = []
+        self.content = ""
+        self.filename = ""
+        self.index = 0
+        self.current_token = ""
         self.filename = filename
         self.tokens.append("<tokens>")
         jack_file = open(filename, "r")
@@ -23,6 +27,72 @@ class JackTokenizer:
         self.tokens.append("</tokens>")
         jack_file.close()
         self.__save_tokens()
+        self.index = 0
+        self.current_token = ""
+
+    def has_more_tokens(self):
+        if self.index == len(self.tokens):
+            return False
+        return True
+
+    def advance(self):
+        """
+        to call only if has_more_tokens() is True
+        :return: current token
+        """
+        if self.has_more_tokens():
+            self.current_token = self.tokens[self.index]
+            self.index = self.index + 1
+            return self.current_token
+        return False
+
+    def token_type(self):
+        type_token = re.findall(r'<[\s\S]*?>', self.current_token)[0].replace("<","").replace(">","")
+        if type_token in token_types.keys():
+            return token_types[type_token]
+        return ""
+
+    def keyword(self):
+        """
+        Should be called only if current token is a keyword
+        :return: string
+        """
+        if self.token_type() == 'KEYWORD':
+            return keywords_constants[self.current_token.replace("<keyword> ", "").replace(" </keyword>", "")]
+        return ""
+
+    def symbol(self):
+        """
+        Should be called only if current token is a symbol
+        :return: string
+        """
+        if self.token_type() == 'SYMBOL':
+            if self.current_token.replace("<symbol> ","").replace(" </symbol>","") in symbols:
+                return self.current_token.replace("<symbol> ","").replace(" </symbol>","")
+
+    def identifier(self):
+        """
+        Should be called only if current token is an identifier
+        :return: string
+        """
+        if self.token_type() == 'IDENTIFIER':
+            return self.current_token.replace("<identifier> ","").replace(" </identifier>","")
+
+    def int_val(self):
+        """
+        Should be called only if current token is an integerConstant
+        :return: int
+        """
+        if self.token_type() == 'INT_CONST':
+            return int(self.current_token.replace("<integerConstant> ","").replace(" </integerConstant>",""))
+
+    def string_val(self):
+        """
+        Should be called only if current token is an stringConstant
+        :return: string
+        """
+        if self.token_type() == 'STRING_CONST':
+            return self.current_token.replace("<stringConstant> ","").replace(" </stringConstant>","")
 
     def __remove_single_line_comments(self):
         # removes comments //

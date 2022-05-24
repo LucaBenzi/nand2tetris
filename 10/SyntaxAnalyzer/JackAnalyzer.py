@@ -1,6 +1,7 @@
 import argparse
 import os
 from JackTokenizer import JackTokenizer
+from CompilationEngine import CompilationEngine
 
 parserDescription = """Provide a single .jack file or an entire directory"""
 parser = argparse.ArgumentParser(description=parserDescription)
@@ -21,4 +22,5 @@ print(file_list)
 
 for f in file_list:
     tokenizer = JackTokenizer(f)
-    # tokenizer.tokenizeSource(f)
+    compiler = CompilationEngine(f.replace(".jack","T.xml"))
+    compiler.compile()
