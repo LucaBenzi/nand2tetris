@@ -32,3 +32,8 @@ keywords_constants = {
     "while": "WHILE",
     "return": "RETURN"
 }
+
+op = ['+', '-', '*', '/', '&', '|', '<', '>', '=']
+unaryOp = ['-', '~']
+keywordConstants = ['true', 'false', 'null', 'this']
+statements = ["let","if","while","do","return"]

@@ -22,5 +22,5 @@ print(file_list)
 
 for f in file_list:
     tokenizer = JackTokenizer(f)
-    compiler = CompilationEngine(f.replace(".jack","T.xml"))
+    compiler = CompilationEngine(f.split('/')[-1].replace(".jack","T.xml"))
     compiler.compile()
