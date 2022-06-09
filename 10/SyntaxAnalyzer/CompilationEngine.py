@@ -28,7 +28,7 @@ class CompilationEngine:
         if "identifier" in self.current_token:
             if "[" in self.look_ahead():
                 return "array"
-            if "("  in self.look_ahead() or "." in self.look_ahead():
+            if "(" in self.look_ahead() or "." in self.look_ahead():
                 return "subroutineCall"
             else:
                 return "variable"
