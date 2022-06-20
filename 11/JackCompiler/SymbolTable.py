@@ -5,7 +5,7 @@ y    | int  | field  | 1
 pC   | Point| static | 0
 
 """
-
+var_kind = ["STATIC", "FIELD", "VAR", "ARG"]
 
 class SymbolTable:
 
@@ -23,23 +23,38 @@ class SymbolTable:
                       "ARG": 0,
                       "VAR": 0}
 
-    def define(self, name, type, kind):
+    def define(self, name, type_, kind):
         """
         :param name: string
         :param type: string
         :param kind: STATIC, FIELD, ARG, VAR
         """
-        self.table[name] = {"type": type, "kind": kind, "index": self.index[kind]}
-        self.index[kind] += 1
+        if kind.upper() not in var_kind:
+            raise BaseException(f"Error: provide one of the following kind: {var_kind}. Value provided: {kind.upper()}")
+        self.table[name] = {"type": type_, "kind": kind, "index": self.index[kind.upper()]}
+        self.index[kind.upper()] += 1
 
     def var_count(self, kind):
+        if kind not in var_kind:
+            raise BaseException(f"Error: provide one of the following kind: {var_kind}. Value provided: {kind}")
         return self.index[kind]
 
     def kind_of(self, name):
+        if name not in self.table:
+            raise BaseException(f"{name} variable not in Symbol Table")
         return self.table[name]["kind"]
 
-    def kind_of(self, name):
+    def type_of(self, name):
+        if name not in self.table:
+            raise BaseException(f"{name} variable not in Symbol Table")
         return self.table[name]["type"]
 
     def index_of(self, name):
+        if name not in self.table:
+            raise BaseException(f"{name} variable not in Symbol Table")
         return self.table[name]["index"]
+
+    def in_table(self, name):
+        if name in self.table.keys():
+            return True
+        return False

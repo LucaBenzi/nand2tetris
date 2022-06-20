@@ -24,14 +24,14 @@ class Main {
         let a[b[a[3]]] = a[a[5]] * b[7 - a[3] - Main.double(2) + 1];  // a[5] = 8 * 5 = 40
         let c[0] = null;
         let c = c[0];
-        
-        do Output.printString("Test 1 - Required result: 5, Actual result: ");
+        // qua ho modificato le stringhe
+        do Output.printString("Test 1  Required result 5 Actual result ");
         do Output.printInt(b[2]);
         do Output.println();
-        do Output.printString("Test 2 - Required result: 40, Actual result: ");
+        do Output.printString("Test 2  Required result 40 Actual result ");
         do Output.printInt(a[5]);
         do Output.println();
-        do Output.printString("Test 3 - Required result: 0, Actual result: ");
+        do Output.printString("Test 3  Required result 0 Actual result ");
         do Output.printInt(c);
         do Output.println();
         
@@ -47,10 +47,10 @@ class Main {
             let b[1] = b[1] + c[1];  // b[1] = 33 + 77 = 110;
         }
 
-        do Output.printString("Test 4 - Required result: 77, Actual result: ");
+        do Output.printString("Test 4  Required result 77 Actual result ");
         do Output.printInt(c[1]);
         do Output.println();
-        do Output.printString("Test 5 - Required result: 110, Actual result: ");
+        do Output.printString("Test 5  Required result 110 Actual result ");
         do Output.printInt(b[1]);
         do Output.println();
         
